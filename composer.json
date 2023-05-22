@@ -37,12 +37,5 @@
 	},
 	"config"      : {
 		"preferred-install" : "dist"
-	},
-	"scripts"     : {
-		"post-autoload-dump" : [
-			"@php think service:discover",
-			"@php think vendor:publish",
-			"@php think bp:publish --dev composer.json"
-		]
 	}
 }
