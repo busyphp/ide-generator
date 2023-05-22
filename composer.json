@@ -1,0 +1,48 @@
+{
+	"name"        : "busyphp/ide-generator",
+	"type"        : "library",
+	"description" : "用于生成符合编辑器(IDE)支持的注释，以提高开发效率",
+	"homepage"    : "http://www.harter.cn/?form=BusyPHP&plugin=ide-generator",
+	"keywords"    : [
+		"ide helper"
+	],
+	"authors"     : [
+		{
+			"name"  : "busy^life",
+			"email" : "busy.life@qq.com"
+		}
+	],
+	"license"     : "Apache-2.0",
+	"require"     : {
+		"php"                               : ">=8.0.0",
+		"phpdocumentor/reflection-docblock" : "^5.0",
+		"ergebnis/classy"                   : "^1.1",
+		"psr/event-dispatcher"              : "^1.0"
+	},
+	"require-dev" : {
+		"busyphp/busyphp"    : "^7.0",
+		"symfony/var-dumper" : "^4.2"
+	},
+	"autoload"    : {
+		"psr-4" : {
+			"BusyPHP\\ide\\generator\\" : "src"
+		}
+	},
+	"extra"       : {
+		"busyphp" : {
+			"manager" : {
+				"name" : "IDE注释生成器"
+			}
+		}
+	},
+	"config"      : {
+		"preferred-install" : "dist"
+	},
+	"scripts"     : {
+		"post-autoload-dump" : [
+			"@php think service:discover",
+			"@php think vendor:publish",
+			"@php think bp:publish --dev composer.json"
+		]
+	}
+}
